@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>Test CORS</title>
+    <script src="lib/jquery.js"></script>
+</head>
+
+<body>
+    <h1>Test CORS</h1>
+
+    <div id="app">
+        <input id="request" type="button" value="Request">
+        <div id="response"></div>
+    </div>
+
+    <script>
+        $().ready(() => {});
+
+        $('#request').on('click', () => {
+            $('#response').html('Response');
+        });
+    </script>
+</body>
