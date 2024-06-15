@@ -9,15 +9,46 @@
     <h1>Test CORS</h1>
 
     <div id="app">
-        <input id="request" type="button" value="Request">
+        <div>
+            <input id="request-static" type="button" value="Static">
+            <input id="request-static-error" type="button" value="Static Error">
+            <input id="request-backend-local" type="button" value="Local backend">
+        </div>
+        <div>
+            <input id="remote-backend-url" type="text" value="http://localhost:3000">
+            <input id="request-backend-remote" type="button" value="Remote backend">
+        </div>
         <div id="response"></div>
     </div>
 
     <script>
         $().ready(() => {});
 
-        $('#request').on('click', () => {
-            $('#response').html('Response');
-        });
+        let responseNo = 1;
+        function setResponse(response) {
+            $('#response').html(`${responseNo++}: ${response}`);
+        }
+
+        function doRequest(url) {
+            if (typeof url === 'function') {
+                url = url();
+            }
+            $.get(url)
+                .done(data => {
+                    setResponse(data);
+                })
+                .fail((jqXHR, error) => {
+                    setResponse(`ERROR: ${jqXHR.status}, ${jqXHR.statusText}`);
+                });
+        }
+
+        function handleRequest(selector, url) {
+            $(selector).on('click', () => doRequest(url));
+        }
+
+        handleRequest('#request-static', 'static-answer.txt');
+        handleRequest('#request-static-error', 'static-answer-err.txt');
+        handleRequest('#request-backend-local', '/local-backend');
+        handleRequest('#request-backend-remote', () => $('#remote-backend-url').val());
     </script>
 </body>
