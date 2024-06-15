@@ -5,6 +5,8 @@
   "author": "Sergey Tumanov",
   "license": "ISC",
   "main": "",
-  "scripts": {
+  "scripts": {},
+  "dependencies": {
+    "express": "^4.19.2"
   }
 }
