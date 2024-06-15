@@ -9,15 +9,34 @@
     <h1>Test CORS</h1>
 
     <div id="app">
-        <input id="request" type="button" value="Request">
+        <div>
+            <input id="request-static" type="button" value="Static">
+            <input id="request-static-err" type="button" value="Static Err">
+        </div>
         <div id="response"></div>
     </div>
 
     <script>
         $().ready(() => {});
 
-        $('#request').on('click', () => {
-            $('#response').html('Response');
-        });
+        function doRequest(url) {
+            function setResponse(response) {
+                $('#response').html(response);
+            }
+            $.get(url)
+                .done(data => {
+                    setResponse(data);
+                })
+                .fail((jqXHR, error) => {
+                    setResponse(`ERROR: ${jqXHR.status}, ${error}`);
+                });
+        }
+
+        function handleRequest(selector, url) {
+            $(selector).on('click', () => doRequest(url));
+        }
+
+        handleRequest('#request-static', 'static-answer.txt');
+        handleRequest('#request-static-err', 'static-answer-err.txt');
     </script>
 </body>
