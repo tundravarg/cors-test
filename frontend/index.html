@@ -12,6 +12,8 @@
         <div>
             <input id="request-static" type="button" value="Static">
             <input id="request-static-err" type="button" value="Static Err">
+            <input id="request-backend-proxy" type="button" value="Backend (proxy)">
+            <input id="request-backend" type="button" value="Backend (remote)">
         </div>
         <div id="response"></div>
     </div>
@@ -19,16 +21,18 @@
     <script>
         $().ready(() => {});
 
+        let responseNo = 1;
+        function setResponse(response) {
+            $('#response').html(`${responseNo++}: ${response}`);
+        }
+
         function doRequest(url) {
-            function setResponse(response) {
-                $('#response').html(response);
-            }
             $.get(url)
                 .done(data => {
                     setResponse(data);
                 })
                 .fail((jqXHR, error) => {
-                    setResponse(`ERROR: ${jqXHR.status}, ${error}`);
+                    setResponse(`ERROR: ${jqXHR.status}, ${jqXHR.statusText}`);
                 });
         }
 
@@ -38,5 +42,7 @@
 
         handleRequest('#request-static', 'static-answer.txt');
         handleRequest('#request-static-err', 'static-answer-err.txt');
+        handleRequest('#request-backend-proxy', '/local-backend');
+        handleRequest('#request-backend', 'http://localhost:3000');
     </script>
 </body>

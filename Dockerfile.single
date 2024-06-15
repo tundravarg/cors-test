@@ -3,7 +3,7 @@ FROM alpine:3.20.0
 RUN apk update
 RUN apk add bash
 
-RUN apk add vim nginx nodejs npm
+RUN apk add nginx nodejs npm vim curl
 
 WORKDIR /root
 
