@@ -1,0 +1,9 @@
+services:
+  test-cors-proxy:
+    container_name: test-cors-proxy
+    image: test-cors-proxy
+    build:
+      context: .
+      dockerfile: ./Dockerfile.proxy
+    ports:
+      - "3000:80"
