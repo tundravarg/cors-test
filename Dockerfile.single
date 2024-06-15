@@ -1,0 +1,20 @@
+FROM alpine:3.20.0
+
+RUN apk update
+RUN apk add bash
+
+RUN apk add vim nginx nodejs npm
+
+WORKDIR /root
+
+COPY backend ./backend
+RUN cd backend && \
+    npm i
+
+COPY frontend /usr/share/nginx/frontend
+
+COPY docker/single/default.conf /etc/nginx/http.d/default.conf
+COPY docker/single/init.sh ./
+
+WORKDIR /root
+ENTRYPOINT [ "sh", "init.sh" ]

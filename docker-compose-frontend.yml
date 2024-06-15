@@ -1,0 +1,11 @@
+services:
+  test-cors-frontend:
+    container_name: test-cors-frontend
+    image: test-cors-frontend
+    build:
+      context: .
+      dockerfile: ./Dockerfile.frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
