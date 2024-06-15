@@ -3,6 +3,7 @@
 FILTER='
   -f name=^test-cors-backend$
   -f name=^test-cors-frontend$
+  -f name=^test-cors-single$
 '
 
 echo "Remove containers:"

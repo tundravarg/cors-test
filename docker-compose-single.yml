@@ -1,0 +1,10 @@
+services:
+  test-cors-single:
+    container_name: test-cors-single
+    image: test-cors-single
+    build:
+      context: .
+      dockerfile: ./Dockerfile.single
+    ports:
+      - "3000:3000"
+      - "8080:80"
