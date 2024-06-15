@@ -1,6 +1,0 @@
-services:
-  base-image-builder:
-    build:
-      context: .
-      dockerfile: ./Dockerfile.base
-    image: test-cors-base

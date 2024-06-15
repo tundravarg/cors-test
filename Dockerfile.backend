@@ -1,0 +1,14 @@
+FROM alpine:3.20.0
+
+RUN apk update
+RUN apk add bash
+
+RUN apk add nodejs npm
+
+WORKDIR /root
+COPY backend ./backend
+RUN cd backend && \
+    npm i
+
+WORKDIR /root/backend
+ENTRYPOINT [ "node", "index.mjs" ]
