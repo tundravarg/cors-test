@@ -8,11 +8,16 @@
 <body>
     <h1>Test CORS</h1>
 
-    <div id="app"></div>
+    <div id="app">
+        <input id="request" type="button" value="Request">
+        <div id="response"></div>
+    </div>
 
     <script>
-        $().ready(() => {
-            $('#app').html('<p>jQuery</p>');
+        $().ready(() => {});
+
+        $('#request').on('click', () => {
+            $('#response').html('Response');
         });
     </script>
 </body>
