@@ -5,10 +5,10 @@ import express from 'express';
 
 const APP = express();
 
-APP.use((request, response, next) => {
-    response.setHeader('Access-Control-Allow-Origin', '*')
-    next();
-});
+// APP.use((request, response, next) => {
+//     response.setHeader('Access-Control-Allow-Origin', '*')
+//     next();
+// });
 
 let count = 1;
 APP.get('/', (request, response) => {
