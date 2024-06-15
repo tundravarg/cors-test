@@ -1,9 +1,4 @@
-FROM alpine:3.20.0
-
-RUN apk update
-RUN apk add bash
-
-RUN apk add nodejs npm
+FROM node:20.14.0-slim
 
 WORKDIR /root
 COPY backend ./backend
