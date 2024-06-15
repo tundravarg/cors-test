@@ -4,8 +4,10 @@
   "description": "",
   "author": "Sergey Tumanov",
   "license": "ISC",
-  "main": "",
-  "scripts": {},
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs"
+  },
   "dependencies": {
     "express": "^4.19.2"
   }
