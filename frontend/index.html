@@ -2,8 +2,17 @@
 
 <head>
     <title>Test CORS</title>
+    <script src="lib/jquery.js"></script>
 </head>
 
 <body>
     <h1>Test CORS</h1>
+
+    <div id="app"></div>
+
+    <script>
+        $().ready(() => {
+            $('#app').html('<p>jQuery</p>');
+        });
+    </script>
 </body>
